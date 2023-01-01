@@ -1,15 +1,17 @@
 from abc import ABC, abstractmethod
 from Data import *
+import re
 
 class Funcionario(ABC):
-     def __init__(self, nome, cpf, Data_nascimento,telefone,endereco,salario,matricula):
-        self._nome=nome
-        self._cpf=cpf
-        self._Data_nascimento=Data_nascimento
-        self._telefone=telefone
-        self._endereco=endereco
-        self._salario=salario
-        self._matricula=matricula
+     def __init__(self, nome, cpf, Data_nascimento,telefone,endereco):
+        if (self.valida_cpf(cpf) == True and self.valida_telefone(telefone)==True):
+            self._nome=nome
+            self._cpf=cpf
+            self._Data_nascimento=Data_nascimento
+            self._telefone=telefone
+            self._endereco=endereco
+        else:
+            raise ValueError("O CPF ou o Telefone não é válido.")    
 
      @property
      def matricula(self):
@@ -76,6 +78,20 @@ class Funcionario(ABC):
             return True
         else:
             return False
+
+     def valida_cpf(self,cpf):
+        padrao=re.compile("[0-9]{3}[.]?[0-9]{3}[.]?[0-9]{3}[-]?[0-9]{2}")
+        if ( not padrao.match(cpf)):
+            return False
+        else:
+            return True  
+
+     def valida_telefone(self,telefone):
+        padrao=re.compile("[55]?[0-9]?[0-9]?[9]?[0-9]{4}[-]?[0-9]{4}")
+        if ( not padrao.match(telefone)):
+            return False
+        else:
+            return True    
 
 
 

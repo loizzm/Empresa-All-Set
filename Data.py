@@ -1,5 +1,5 @@
 class Data:
-    def __init__(self, dia=1, mes=9, ano=2001, horas=8, minutos=30, segundos=30):
+    def __init__(self, dia=1, mes=9, ano=2001, horas=0, minutos=0, segundos=0):
         self._dia=dia
         self._ano = ano
         self._mes=mes
