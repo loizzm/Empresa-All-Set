@@ -1,0 +1,17 @@
+from Dev import *
+from Data import *
+from PontoFlex import *
+
+data= Data(17,7,2001,8,0,0)
+data4= Data(17,7,2001,17,0,0)
+data2= Data(17,7,2001,12,0,0)
+data3= Data(17,7,2001,13,0,0)
+lucas=Dev("lucas","154.449.996-50",data,"553198363-7417","Rua itapura 207, Saudade")
+print(lucas)
+ponto=PontoFlex(data)
+ponto.Registra_ponto(data2)
+ponto.Registra_ponto(data3)
+ponto.Registra_ponto(data4)
+print(ponto)
+print(ponto.Calcula_horas()/60)
+
