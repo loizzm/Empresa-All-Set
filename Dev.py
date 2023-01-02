@@ -17,6 +17,9 @@ class Dev(Funcionario):
         pass
 
      @property
+     def ponto(self):
+        return self.__ponto
+     @property
      def carga_horaria(self):
         return self.__carga_horaria
 

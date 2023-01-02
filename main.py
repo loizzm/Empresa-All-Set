@@ -1,6 +1,7 @@
 from Dev import *
 from Data import *
 from PontoFlex import *
+from Eng import *
 
 data= Data(17,7,2001,8,0,0)
 data4= Data(17,7,2001,17,0,0)
@@ -13,3 +14,10 @@ lucas.Registra_ponto(data2)
 lucas.Registra_ponto(data3)
 lucas.Registra_ponto(data4)
 lucas.Print_ponto()
+amanda= Eng("amanda","154.568.696-32",data,"553198363-7417","Rua Dante 60, São Lucas")
+print(amanda)
+amanda.Registra_ponto(data)
+amanda.Registra_ponto(data4)
+amanda.Print_ponto()
+print(amanda.ponto.Calcula_horas()/60)
+
