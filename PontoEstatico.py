@@ -1,4 +1,5 @@
 from Ponto import *
+import copy
 
 class PontoEstatico(Ponto):
     def __init__(self, data):
@@ -22,7 +23,9 @@ class PontoEstatico(Ponto):
         self.__horario_saida=horario_saida
 
     def Calcula_horas(self): 
-        data_o= self.__horario_saida - self._horario_entrada
+        aux=copy.deepcopy(self.__horario_saida)
+        aux1=copy.deepcopy(self._horario_entrada)
+        data_o=  aux - aux1
         output=(data_o.horas*60)+(data_o.minutos)+(data_o.segundos/60)-60
         return output
 

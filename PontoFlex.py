@@ -1,4 +1,5 @@
 from Ponto import *
+import copy
 
 class PontoFlex(Ponto):
     def __init__(self, data):
@@ -17,9 +18,10 @@ class PontoFlex(Ponto):
         output=Data()
         for data in self._ponto:
             if(self._ponto.index(data) % 2 == 0):
-                data_aux=data
+                data_aux=copy.deepcopy(data)
             else:
-                data_aux= data - data_aux
+                aux=copy.deepcopy(data)
+                data_aux= aux - data_aux
                 output.minutos+= ((data_aux.horas)*60) + data_aux.minutos + (data_aux._segundos/60)
         return output.minutos  
 
@@ -34,4 +36,4 @@ class PontoFlex(Ponto):
                 output+=f' Entrada: {data.horas}:{data.minutos}:{data.segundos}\n'
             else:
                 output+=f' Saída: {data.horas}:{data.minutos}:{data.segundos}\n'
-        return output        
+        return output  

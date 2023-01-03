@@ -7,12 +7,23 @@ class Eng(Funcionario):
         super().__init__( nome, cpf, Data_nascimento,telefone,endereco)
         self.__carga_horaria=carga_horaria
         self.__ponto=None
+        self.__salario=0
 
     def __str__(self):
         return f'Engenheiro: {self._nome}\n Cpf: {self._cpf}\n Data de Nascimento: {self._Data_nascimento}\n Telefone: {self._telefone}\n Endereço: {self._endereco}\n'
 
     def calc_salario(self):
-        pass
+        output = (self.ponto.Calcula_horas()/60)*49
+        self.salario+=output
+        return output
+
+    @property
+    def salario(self):
+        return self.__salario
+
+    @salario.setter
+    def salario(self,salario):
+        self.__salario=salario
 
     @property
     def ponto(self):

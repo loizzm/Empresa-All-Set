@@ -5,7 +5,7 @@ import re
 class Funcionario(ABC):
      def __init__(self, nome, cpf, Data_nascimento,telefone,endereco):
         if (self.valida_cpf(cpf) == True and self.valida_telefone(telefone)==True):
-            self._nome=nome
+            self._nome=nome.title()
             self._cpf=cpf
             self._Data_nascimento=Data_nascimento
             self._telefone=telefone
