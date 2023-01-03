@@ -42,5 +42,8 @@ class Eng(Funcionario):
         else:    
             self.__ponto.horario_saida=Data
 
+    def del_Ponto(self):
+      self.ponto.Del_ponto()
+
     def Print_ponto(self):  
         print(self.__ponto)         

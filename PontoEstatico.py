@@ -31,6 +31,11 @@ class PontoEstatico(Ponto):
 
     def __str__(self):
         output="Ponto do dia: \n"
-        output+=f' Entrada: {self._horario_entrada.horas}:{self._horario_entrada.minutos}:{self._horario_entrada.segundos}\n'
-        output+=f' Saída: {self.__horario_saida.horas}:{self.__horario_saida.minutos}:{self.__horario_saida.segundos}\n'
+        if (self._horario_entrada != None and self.__horario_saida != None):
+            output+=f' Entrada: {self._horario_entrada.horas}:{self._horario_entrada.minutos}:{self._horario_entrada.segundos}\n'
+            output+=f' Saída: {self.__horario_saida.horas}:{self.__horario_saida.minutos}:{self.__horario_saida.segundos}\n'
+        elif (self._horario_entrada != None):
+            output+=f' Entrada: {self._horario_entrada.horas}:{self._horario_entrada.minutos}:{self._horario_entrada.segundos}\n'
+        else:
+            output+=f' Sem Pontos até o Momento'
         return output        

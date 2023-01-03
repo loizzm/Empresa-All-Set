@@ -47,7 +47,9 @@ class Dev(Funcionario):
      def Print_ponto(self):  
         print(self.__ponto)     
 
-         
+     def del_Ponto(self):
+      self.ponto.Del_ponto()
+
 
         
         
