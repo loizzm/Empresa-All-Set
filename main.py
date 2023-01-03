@@ -3,6 +3,7 @@ from Data import *
 from PontoFlex import *
 from Eng import *
 from Estagiario import *
+from Gerente import *
 
 data= Data(17,7,2001,8,0,0)
 data4= Data(17,7,2001,17,0,0)
@@ -22,10 +23,8 @@ amanda.Print_ponto()
 print(luiz)
 amanda.Registra_ponto(data)
 amanda.Registra_ponto(data4)
-print(amanda.ponto.Calcula_horas()/60)
-print(lucas.calc_salario())
-print(amanda.ponto.Calcula_horas()/60)
-print(lucas.salario)
+
+
 
 
 
