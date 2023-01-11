@@ -23,5 +23,8 @@ class Estagiario(Funcionario):
      def salario(self,salario):
         self.__salario=salario
 
+     def calc_Salario(self):
+         return self.salario
+
      def __str__(self):
         return f'Estagiário: {self._nome}\n Cpf: {self._cpf}\n Data de Nascimento: {self._Data_nascimento}\n Telefone: {self._telefone}\n Endereço: {self._endereco}\n'

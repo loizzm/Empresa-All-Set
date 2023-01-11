@@ -34,7 +34,7 @@ class Gerente(Funcionario):
     def calc_Salario(self):
         output=0
         for func in self.__subordinados:
-            output+= func.salario
+            output+= func.calc_salario()
         self.salario=output
 
     def __str__(self):
