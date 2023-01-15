@@ -1,6 +1,5 @@
 from Dev import Dev
 from Data import Data
-from PontoFlex import PontoFlex
 from Eng import Eng
 from Estagiario import Estagiario
 from Gerente import Gerente
@@ -20,18 +19,12 @@ luiz=Estagiario("Luiz","154.568.696-32",data,"553198363-7417","Rua Dante 60, Sã
 amanda.Registra_ponto(data)
 amanda.Registra_ponto(data4)
 angelica= Gerente("angelica","154.568.696-32",data,"553198363-7417","Rua Dante 60, São Lucas")
-angelica.add_Funcionario(amanda)
-angelica.add_Funcionario(lucas)
-print(amanda.calc_salario())
-print(lucas.calc_salario())
-angelica.calc_Salario()
-angelica.calc_Salario()
-print(angelica.salario)
 Empresa=Empresa.instance()
-Empresa1=Empresa.instance()
-Empresa.cadastra_Funcionario(angelica)
-Empresa.cadastra_Funcionario(amanda)
-print(Empresa)
+Empresa.end="Rua Darcy Vargas 25, Nova Suissa"
+Empresa.cadastra_Gerente(angelica)
+Empresa.cadastra_Funcionario(lucas,angelica)
+Empresa.cadastra_Funcionario(amanda,angelica)
+Empresa.desliga_Func(lucas)
 
 
 

@@ -41,6 +41,7 @@ class Gerente(Funcionario):
         return f'Gerente: {self._nome}\n Cpf: {self._cpf}\n Data de Nascimento: {self._Data_nascimento}\n Telefone: {self._telefone}\n Endereço: {self._endereco}\n'
 
     def print_Subordinados(self):
+        print(f'***Subordinados à {self.nome}***')
         for func in self.__subordinados:
             print(func)
 

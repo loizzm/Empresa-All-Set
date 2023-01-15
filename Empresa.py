@@ -8,9 +8,10 @@ class Empresa:
 
     _instance = None
     
-    def __init__(self,Funcionarios=[]):
+    def __init__(self, Funcionarios=[]):
         self.attr = None
         self.Funcionarios=Funcionarios
+        self.__end=str()
 
     @classmethod
     def instance(cls):
@@ -18,9 +19,34 @@ class Empresa:
             cls._instance = cls()
         return cls._instance
 
-    def cadastra_Funcionario(self,Func):
-        self.Funcionarios.append(Func)
+    def cadastra_Funcionario(self,Func,gerente):
+        if (type(Func)!= Gerente):
+            gerente.add_Funcionario(Func)
+            self.Funcionarios.append(Func)
+        else:
+            raise Exception("O funcionário em questão é um gerente e deve ser inserido com outro método")          
     
+    def cadastra_Gerente(self,Func):
+        if (type(Func)!= Gerente):
+            raise Exception("O funcionário em questão não é um gerente e deve ser inserido com outro método")  
+            
+        else:
+            self.Funcionarios.append(Func)
+
+    def find_Func(self,Func):
+        return self.Funcionarios[self.Funcionarios.index(Func)]
+
+    def desliga_Func(self,func):
+        del self.Funcionarios[self.Funcionarios.index(func)]
+
+    @property
+    def end(self):
+        return self.__end
+        
+    @end.setter
+    def end(self,endereco):
+        self.__end=endereco
+
     def __str__(self):
         outp="***Empresa*** \n"
         for Func in self.Funcionarios:
