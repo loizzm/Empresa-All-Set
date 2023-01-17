@@ -1,5 +1,5 @@
 # Empresa-Prototype
-<p><font face="Papyrus"> Criação de um modelo simples de uma empresa(Usando a classe Data criada anteriomente) </font> <br /></p>
+<p><font face="Courier"> Criação de um modelo simples de uma empresa(Usando a classe Data criada anteriomente) </font> <br /></p>
 <p><strong>Objetivos:</strong></p>
 <ul>
   <li>Praticar padrões de projeto</li>
