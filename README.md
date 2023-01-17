@@ -1,8 +1,11 @@
 # Empresa-Prototype
 <p>Criação de um modelo simples de uma empresa(Usando a classe Data criada anteriomente)</p>
-<p>Objetivos:</p>
-+ Praticar padrões de projeto
-+ Praticar uso de API's
-+ Praticar uso da sobrecarga de operadores
-+ Praticar integração entre classes
-+ Praticar abstração de problemas
+<p><strong>>Objetivos:</strong></p>
+<ul>
+  <li>Praticar padrões de projeto</li>
+  <li>Praticar uso de API's</li>
+  <li>Praticar uso da sobrecarga de operadores</li>
+  <li>Praticar integração entre classes</li>
+  <li>Praticar abstração de problemas</li>
+</ul>
+
