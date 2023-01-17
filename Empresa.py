@@ -3,14 +3,16 @@ from Data import Data
 from Dev import Dev
 from Gerente import Gerente
 from Estagiario import Estagiario
+from Veiculo import Veiculo
 
 class Empresa:
 
     _instance = None
     
-    def __init__(self, Funcionarios=[]):
+    def __init__(self, Funcionarios=[],frota=[]):
         self.attr = None
         self.Funcionarios=Funcionarios
+        self.frota=frota
         self.__end=str()
 
     @classmethod
@@ -26,6 +28,15 @@ class Empresa:
         else:
             raise Exception("O funcionário em questão é um gerente e deve ser inserido com outro método")          
     
+    def cadastra_Veiculo(self,veiculo):
+       if (veiculo in self.frota):
+            raise Exception("O veículo em questão já foi adicionado")
+       else:
+            self.frota.append(veiculo)
+
+    def add_Funcionario(self,veiculo,func):
+        veiculo.add_Func(func)
+
     def cadastra_Gerente(self,Func):
         if (type(Func)!= Gerente):
             raise Exception("O funcionário em questão não é um gerente e deve ser inserido com outro método")  
