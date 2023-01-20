@@ -3,6 +3,8 @@ from Data import Data
 from Dev import Dev
 from Gerente import Gerente
 from Estagiario import Estagiario
+import googlemaps
+from datetime import datetime
 
 class Veiculo:
      def __init__(self, placa,end,modelo,lotacao,funcionarios=[], rota ={}):
@@ -60,6 +62,20 @@ class Veiculo:
 
      def __fix_Rotas(self,Func):
         pass
+     
+     def __api(self,func):
+        gmaps = googlemaps.Client(key='Add Your Key here')
+        geocode_result = gmaps.geocode(func.endereco)
+        geocode_result_Empresa = gmaps.geocode(self.__end)
+        now = datetime.now()
+        
+        directions_result = gmaps.directions(geocode_result,
+                                    geocode_result_Empresa,
+                                     mode="driving",
+                                     avoid="tolls",
+                                     departure_time=now)
+        
+        return directions_result[0]['legs'][0]['duration']['text']
 
         
     
