@@ -44,7 +44,7 @@ class Veiculo:
         return self.__modelo
         
      @modelo.setter
-     def  placa(self, modelo):
+     def  modelo(self, modelo):
         self.__modelo=modelo
 
      def __verifica_Func(self,Func):
@@ -73,7 +73,7 @@ class Veiculo:
         pass
      
      def __api(self,func):
-      API_KEY= 'Key'
+      API_KEY= 'AIzaSyDwD5tBW2gU--VwTsCA5FLz4qfkYOs_cw8'
       map_client = googlemaps.Client(API_KEY)
       r = map_client.geocode(self.__end)
       lat_empresa=r[0]['geometry']['location']['lat']

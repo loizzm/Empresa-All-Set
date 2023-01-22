@@ -5,6 +5,7 @@ from Gerente import Gerente
 from Estagiario import Estagiario
 from Veiculo import Veiculo
 
+
 class Empresa:
 
     _instance = None
@@ -21,38 +22,70 @@ class Empresa:
             cls._instance = cls()
         return cls._instance
 
-    def cadastra_Funcionario(self,Func,gerente):
-        if (type(Func)!= Gerente):
+    def cadastra_Funcionario(self,nome, cpf, Data_nascimento,telefone,endereco,gerente,cargo):
+        if (type(gerente) == Gerente and self.__verifica_Func(cpf)):
+            if (cargo == "Eng"):
+                Func = Eng(nome, cpf, Data_nascimento,telefone,endereco)
+            elif (cargo == "Dev"):
+                Func = Dev(nome, cpf, Data_nascimento,telefone,endereco)
+            else:
+                Func = Estagiario(nome, cpf, Data_nascimento,telefone,endereco)
             gerente.add_Funcionario(Func)
             self.Funcionarios.append(Func)
         else:
-            raise Exception("O funcionário em questão é um gerente e deve ser inserido com outro método")          
+            raise Exception("Inserção inválida")          
     
-    def cadastra_Veiculo(self,veiculo):
-       if (veiculo in self.frota):
+    def __verifica_Func(self,cpf):
+        for Func in self.Funcionarios:
+            if (Func.cpf == cpf):
+                return False
+            else:
+                return True
+
+    def __verifica_Veiculo(self,placa):
+        for car in self.frota:
+            if (car.placa == placa):
+                return False
+            else:
+                return True    
+            
+    def cadastra_Veiculo(self,placa,modelo,lotacao):
+       if (self.__verifica_Veiculo(placa)== False):
             raise Exception("O veículo em questão já foi adicionado")
        else:
-            self.frota.append(veiculo)
+            V = Veiculo(placa,self.__end,modelo,lotacao)
+            self.frota.append(V)
 
-    def add_Funcionario(self,veiculo,func):
-        veiculo.add_Func(func)
 
-    def cadastra_Gerente(self,Func):
-        if (type(Func)!= Gerente):
-            raise Exception("O funcionário em questão não é um gerente e deve ser inserido com outro método")  
+    def cadastra_Gerente(self,nome, cpf, Data_nascimento,telefone,endereco):
+        if (self.__verifica_Func(cpf) == False):
+            raise Exception("O gerente em questão já foi adicionado")  
             
         else:
+            Func = Gerente(nome, cpf, Data_nascimento,telefone,endereco)
             self.Funcionarios.append(Func)
 
-    def find_Veiculo(self,Veiculo):
-        return self.frota[self.frota.index(Veiculo)]
+    def find_Veiculo(self,placa):
+        indice=0
+        for V in self.frota:
+            if (V.placa == placa):
+                indice=self.frota.index(V)
+
+        return self.frota[indice]
     
-    def find_Func(self,Func):
-        return self.Funcionarios[self.Funcionarios.index(Func)]
+    def find_Func(self,cpf):
+        for Func in self.Funcionarios:
+            if (Func.cpf ==cpf):
+                indice=self.Funcionarios.index(Func)
+
+        return self.Funcionarios[indice]
 
     def desliga_Func(self,func):
         del self.Funcionarios[self.Funcionarios.index(func)]
 
+    def registra_Ponto(self,Func,Data):
+        Func.Registra_ponto(Data)
+    
     @property
     def end(self):
         return self.__end
