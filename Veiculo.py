@@ -73,7 +73,7 @@ class Veiculo:
         pass
      
      def __api(self,func):
-      API_KEY= 'AIzaSyDwD5tBW2gU--VwTsCA5FLz4qfkYOs_cw8'
+      API_KEY= 'key'
       map_client = googlemaps.Client(API_KEY)
       r = map_client.geocode(self.__end)
       lat_empresa=r[0]['geometry']['location']['lat']
