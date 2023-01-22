@@ -44,6 +44,9 @@ class Empresa:
         else:
             self.Funcionarios.append(Func)
 
+    def find_Veiculo(self,Veiculo):
+        return self.frota[self.frota.index(Veiculo)]
+    
     def find_Func(self,Func):
         return self.Funcionarios[self.Funcionarios.index(Func)]
 
@@ -60,7 +63,11 @@ class Empresa:
 
     def __str__(self):
         outp="***Empresa*** \n"
+        outp += "**Funcinários:**\n"
         for Func in self.Funcionarios:
             outp += str(Func)
+        outp += "**Frota:**\n"
+        for V in self.frota:
+            outp += str(V)
         return outp
     

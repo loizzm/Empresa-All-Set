@@ -53,10 +53,19 @@ class Veiculo:
          else:
             return True
 
+     def __eq__(self, other):
+        if (self.__placa == other.__placa):
+           return True
+        else:
+           return False
+     
+     def __str__(self):
+        return f' Veículo:\n Modelo:{self.__modelo} \n Placa:{self.__placa}\n Lotação:{self.__lotacao}'
+     
      def add_Func(self,Func):
-         if (self.lotacao > len(self.__funcionarios and self.__verifica_Func(Func))):
+         if (self.lotacao > len(self.__funcionarios) and self.__verifica_Func(Func)):
             self.__funcionarios.append(Func)
-            self.__fix_Rotas(Func)
+            self.__api(Func)
          else:
             raise Exception("Lotação máxima do veículo atingida ou  Funcionário já presente no veículo")
 
@@ -64,18 +73,29 @@ class Veiculo:
         pass
      
      def __api(self,func):
-        gmaps = googlemaps.Client(key='Add Your Key here')
-        geocode_result = gmaps.geocode(func.endereco)
-        geocode_result_Empresa = gmaps.geocode(self.__end)
-        now = datetime.now()
-        
-        directions_result = gmaps.directions(geocode_result,
-                                    geocode_result_Empresa,
-                                     mode="driving",
-                                     avoid="tolls",
-                                     departure_time=now)
-        
-        return directions_result[0]['legs'][0]['duration']['text']
+      API_KEY= 'Key'
+      map_client = googlemaps.Client(API_KEY)
+      r = map_client.geocode(self.__end)
+      lat_empresa=r[0]['geometry']['location']['lat']
+      lng_empresa=r[0]['geometry']['location']['lng']
+      r = map_client.geocode(func.endereco)
+      lat_home=r[0]['geometry']['location']['lat']
+      lng_home=r[0]['geometry']['location']['lng']
+      now=datetime.now()
+      geocode_empresa=f'{lat_empresa},{lng_empresa}'
+      geocode_home=f'{lat_home},{lng_home}'
+      dr = map_client.directions(geocode_home,
+                                          geocode_empresa,
+                                          mode="driving",
+                                          traffic_model='pessimistic',
+                                          departure_time=now)
+      self.__rota[func.nome]=dr[0]['legs'][0]['duration']['value']/60
+      ##self.__fix_Rotas()
+
+     def print_rotas(self):
+           print(self.__rota)
+   
+      
 
         
     
