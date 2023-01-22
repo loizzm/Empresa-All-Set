@@ -95,7 +95,6 @@ class Veiculo:
      def print_rotas(self):
            print(self.__rota)
    
-      
 
         
     

@@ -103,4 +103,3 @@ class Empresa:
         for V in self.frota:
             outp += str(V)
         return outp
-    
