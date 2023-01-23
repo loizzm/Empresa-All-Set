@@ -5,15 +5,16 @@ from Gerente import Gerente
 from Estagiario import Estagiario
 import googlemaps
 from datetime import datetime
+from copy import deepcopy
 
 class Veiculo:
      def __init__(self, placa,end,modelo,lotacao,funcionarios=[], rota ={}):
-        self.__funcionarios=funcionarios
+        self.__funcionarios= deepcopy(funcionarios)
         self.__placa=placa
         self.__end=end
         self.__modelo=modelo
         self.__lotacao=lotacao
-        self.__rota=rota
+        self.__rota= deepcopy(rota)
     
      @property
      def end(self):
@@ -73,7 +74,7 @@ class Veiculo:
         pass
      
      def __api(self,func):
-      API_KEY= 'key'
+      API_KEY= 'KEY'
       map_client = googlemaps.Client(API_KEY)
       r = map_client.geocode(self.__end)
       lat_empresa=r[0]['geometry']['location']['lat']
