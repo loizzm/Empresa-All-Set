@@ -69,9 +69,6 @@ class Veiculo:
             self.__api(Func)
          else:
             raise Exception("Lotação máxima do veículo atingida ou  Funcionário já presente no veículo")
-
-     def __fix_Rotas(self,Func):
-        pass
      
      def __api(self,func):
       API_KEY= 'KEY'
@@ -91,7 +88,6 @@ class Veiculo:
                                           traffic_model='pessimistic',
                                           departure_time=now)
       self.__rota[func.nome]=dr[0]['legs'][0]['duration']['value']/60
-      ##self.__fix_Rotas()
 
      def print_rotas(self):
            print(self.__rota)
